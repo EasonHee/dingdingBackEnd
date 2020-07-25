@@ -18,9 +18,11 @@ from django.urls import path, include
 from esearch.views import EsearchView
 from users.views import UsersView
 from keywords.views import KeywordsView
+from sendemail.views import EmailView
 
 urlpatterns = [
     path('api/esearch/', EsearchView.as_view()),
     path('api/users/', UsersView.as_view()),
-    path('api/keywords/', KeywordsView.as_view())
+    path('api/keywords/', KeywordsView.as_view()),
+    path('api/emails/', EmailView.as_view())
 ]

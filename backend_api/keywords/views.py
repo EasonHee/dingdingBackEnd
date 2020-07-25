@@ -78,12 +78,12 @@ class KeywordsView(APIView):
             email = request.data['email']
             session = request.data['session']
 
-            self.ret['data'] = []
-            self.ret["data"].append(exchange)
-            self.ret["data"].append(title_code)
-            self.ret["data"].append(content)
-            self.ret["data"].append(email)
-            self.ret["data"].append(session)
+            self.ret['data'] = [{}]
+            self.ret["data"][0]["exchange"] = exchange
+            self.ret["data"][0]["session"] =session
+            self.ret["data"][0]["title_code"] =title_code
+            self.ret["data"][0]["content"] = content
+            self.ret["data"][0]["email"] = email
             #判断 处理    看是否已经有了，是否合法
             result = KeywordsInfo.objects.filter(exchange=exchange, title_code=title_code,
                                                  content=content, email=email, session=session).first()

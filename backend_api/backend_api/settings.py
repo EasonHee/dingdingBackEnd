@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'esearch',
     'keywords',
     'users',
-    'rest_framework'
+    'rest_framework',
+    'sendemail'
 ]
 
 MIDDLEWARE = [
