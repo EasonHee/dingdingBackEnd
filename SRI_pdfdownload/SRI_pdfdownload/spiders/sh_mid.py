@@ -16,9 +16,10 @@ class ShMidSpider(scrapy.Spider):
         infos = cursor.fetchall()
 
         for info in infos:
+
+            # print(info)
+
             id = info[4].split('/')[-1]
-            print("id  :", id, '\n')
-            print('info[4] : ', info[4], '\n')
             if not os.path.exists('F:/pythonprojects/data/sh_mid/{}'.format(id).strip()):
                 yield scrapy.Request(url=info[4], callback=self.parse, dont_filter=True)
 

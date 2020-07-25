@@ -6,18 +6,22 @@ class SriPdfdownloadPipeline:
     def process_item(self, item, spider):
 
         if isinstance(item, SriAnnualItem):
+
+            print('\n', "处理SriAnnualItem : {}".format(item['link']), '\n')
+
             id = item['link'].split('/')[-1]
-            print('\n', "处理SriAnnualItem", '\n')
-            with open('F:/pythonprojects/getpdf/shangzheng/{}'.format(id), 'wb') as fp:
+            url = 'F:/pythonprojects/data/sh_annual/{}'.format(id)
+            with open(url, 'wb') as fp:
                 fp.write(item['content'])
 
 
         elif isinstance(item, SriMidItem):
+
+            print('\n', "处理SriMidItem : {}".format(item['link']), '\n')
+
             id = item['link'].split('/')[-1]
-            print('\n', "处理SriMidItem", '\n')
             url = 'F:/pythonprojects/data/sh_mid/{}'.format(id)
-            print("item.url : {}".format(url))
-            with open('F:/pythonprojects/data/sh_mid/{}'.format(id), 'wb') as fp:
+            with open(url, 'wb') as fp:
                 fp.write(item['content'])
 
         else:
