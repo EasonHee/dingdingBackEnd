@@ -61,7 +61,7 @@ def pdf2txt(url):
                     text = re.sub(replace, '', x.get_text())
                     if len(text) != 0:
                         texts = texts + text
-            print((float)((i + 1) / yeshu) * 100, "%")
+            print("{:.2f}".format((float)((i + 1) / yeshu) * 100), "%")
         return texts
 
     except:
