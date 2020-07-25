@@ -12,6 +12,6 @@ V1.0
     def findall(self, db, table): //返回表中所有内容
     def find(self, db, table, condition):   //condition为sql语言 where给出条件
     def add(self, db, table, insert_content):   //添加的内容 还没有测试
-
+    add测试成功
 3、def an_rpt_updata(cir_bg_time):   //cir_bg_time为每次循环的开始时间，用于判断是否有新数据加入数据库
     成功测试将数据加入到远程es的test索引

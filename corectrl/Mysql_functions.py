@@ -8,11 +8,14 @@ class ReportLocalDB():
 
     #增
     def add(self, db, table, insert_content):
-        sql = "insert into `{0}`.`{1}`".format(db, table)
-        sql = sql + insert_content
-        self.cursor.execute(sql)
-        self.db.commit()
-        return True
+        try:
+            sql = "insert into `{0}`.`{1}`".format(db, table)
+            sql = sql + insert_content
+            self.cursor.execute(sql)
+            self.db.commit()
+            return True
+        except:
+            print("数据库添加失败\n")
 
     #删
     def delete(self):
@@ -24,21 +27,27 @@ class ReportLocalDB():
 
     #查
     def findall(self, db, table):
-        sql = "select * from `{0}`.`{1}`".format(db, table)
-        self.cursor.execute(sql)
-        result = self.cursor.fetchall()
-        return result
+        try:
+            sql = "select * from `{0}`.`{1}`".format(db, table)
+            self.cursor.execute(sql)
+            result = self.cursor.fetchall()
+            return result
+        except:
+            print("查找表所有数据失败")
 
     def find(self, db, table, condition):
-        sql = "select * from `{0}`.`{1}`".format(db, table)
-        sql = sql+condition
-        self.cursor.execute(sql)
-        result = self.cursor.fetchall()
-        return result
+        try:
+            sql = "select * from `{0}`.`{1}`".format(db, table)
+            sql = sql+condition
+            self.cursor.execute(sql)
+            result = self.cursor.fetchall()
+            return result
+        except:
+            print("查找单个数据失败\n")
 
 import time
 if __name__ == "__main__":
-    db = ReportLocalDB("sh", "root", "123456")
-    condition = "where date = {0}".format(1595065225.62821)
-    result = db.find("sh", "sh_annual", condition=condition)
-    print(result)
+    rpt = ReportLocalDB("world", "root", "123456")
+    sql = "(`id`, `name`, `title`) values(5, 'tf', 'jj')"
+    rpt.add("world", "books", sql)
+    rpt.db.commit()

@@ -15,18 +15,23 @@ class SriScrapyPipeline:
 
         # 年报表 (id, code, title, date, link)
         if isinstance(item, SriAnnualItem):
-            sql = "insert into sh.sh_annual(`code`, `title`, `date`, `link`) values(%s,%s,%s,%s);"
-            self.cursor.execute(sql, (item['code'], item['title'], item['date'], item['link']))
-            self.db.commit()
-            return item
+            try:
+                sql = "insert into sh.sh_annual(`code`, `title`, `date`, `link`) values(%s,%s,%s,%s);"
+                self.cursor.execute(sql, (item['code'], item['title'], item['date'], item['link']))
+                self.db.commit()
+                return item
+            except:
+                print("pipeline SriAnnualItem存入数据库失败\n")
 
         # 中报表 (id, code, title, date, link)
         elif isinstance(item, SriMidItem):
-            sql = "insert into sh.sh_mid(`code`, `title`, `date`, `link`) values(%s,%s,%s,%s);"
-            self.cursor.execute(sql, (item['code'], item['title'], item['date'], item['link']))
-            self.db.commit()
-            return item
-
+            try:
+                sql = "insert into sh.sh_mid(`code`, `title`, `date`, `link`) values(%s,%s,%s,%s);"
+                self.cursor.execute(sql, (item['code'], item['title'], item['date'], item['link']))
+                self.db.commit()
+                return item
+            except:
+                print("pileline SirmidItem存入数据库失败\n")
         else:
             return item
 

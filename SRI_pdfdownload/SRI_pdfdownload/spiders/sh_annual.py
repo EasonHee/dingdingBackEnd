@@ -18,7 +18,7 @@ class ShAnnualSpider(scrapy.Spider):
         for info in infos:
             print(info)
             id = info[4].split('/')[-1]
-            if not os.path.exists('F:/pythonprojects/getpdf/shangzheng/{}'.format(id).strip()):
+            if not os.path.exists('F:/pythonprojects/data/sh_annual/{}'.format(id).strip()):
                 yield scrapy.Request(url=info[4], callback=self.parse, dont_filter=True)
 
     def parse(self, response):

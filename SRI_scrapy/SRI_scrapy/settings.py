@@ -54,8 +54,8 @@ ROBOTSTXT_OBEY = False
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'SRI_scrapy.middlewares.SeleniumStocksscrapyaderMiddlewDownloare': 900,
-    'SRI_scrapy.downloadermiddleware.useragent.UserAgentMiddleware': None,
-    'SRI_scrapy.middlewares.RandomUserAgentMiddleware': 10,
+    # 'SRI_scrapy.downloadermiddleware.useragent.UserAgentMiddleware': None,
+    # 'SRI_scrapy.middlewares.RandomUserAgentMiddleware': 10,
     # 'SRI_scrapy.middlewares.ChangeProxy': 543,
 }
 
