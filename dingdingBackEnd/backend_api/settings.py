@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'sendemail',
-    'dividends'
+    'dividends',
+    'stocks'
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+SILENCED_SYSTEM_CHECKS = ['fields.E300', 'fields.E307']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
